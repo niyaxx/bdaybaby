@@ -480,7 +480,7 @@ p{max-width:650px;line-height:1.85;color:#c3cfe9;font-size:17px}
     <!-- CARD 1 -->
     <div class="scrap-card purple-card" onclick="openScrap(0)">
       <div class="scrap-photo">
-        <img src="images/photo12.png" alt="cuddlie pic">
+        <img src="images/photo12.png" onerror="this.onerror=null;this.src='photo12.png';" alt="cuddlie pic">
         <span class="photo-sticker">♡</span>
       </div>
       <p class="scrap-label">id wanna hold you like this</p>
@@ -491,7 +491,7 @@ p{max-width:650px;line-height:1.85;color:#c3cfe9;font-size:17px}
     <!-- CARD 2 -->
     <div class="scrap-card blue-card" onclick="openScrap(1)">
       <div class="scrap-photo">
-        <img src="images/photo8.jpg" alt="so pretty">
+        <img src="images/photo8.jpg" onerror="this.onerror=null;this.src='photo8.jpg';" alt="so pretty">
         <span class="photo-sticker">♫</span>
       </div>
       <p class="scrap-label">im so lucky<3</p>
@@ -502,7 +502,7 @@ p{max-width:650px;line-height:1.85;color:#c3cfe9;font-size:17px}
     <!-- CARD 3 -->
     <div class="scrap-card purple-card" onclick="openScrap(2)">
       <div class="scrap-photo">
-        <img src="images/photo10.png" alt="A silly memory">
+        <img src="images/photo10.png" onerror="this.onerror=null;this.src='photo10.png';" alt="A silly memory">
         <span class="photo-sticker">✧</span>
       </div>
       <p class="scrap-label">you made it so special</p>
@@ -513,7 +513,7 @@ p{max-width:650px;line-height:1.85;color:#c3cfe9;font-size:17px}
     <!-- CARD 4 -->
     <div class="scrap-card blue-card" onclick="openScrap(3)">
       <div class="scrap-photo">
-        <img src="images/photo4.jpg" alt="A special memory">
+        <img src="images/photo4.jpg" onerror="this.onerror=null;this.src='photo4.jpg';" alt="A special memory">
         <span class="photo-sticker">∞</span>
       </div>
       <p class="scrap-label">i fell in love more</p>
@@ -524,7 +524,7 @@ p{max-width:650px;line-height:1.85;color:#c3cfe9;font-size:17px}
     <!-- CARD 5 -->
     <div class="scrap-card purple-card" onclick="openScrap(4)">
       <div class="scrap-photo">
-        <img src="images/photo11.png" alt="Little things about you">
+        <img src="images/photo11.png" onerror="this.onerror=null;this.src='photo11.png';" alt="Little things about you">
         <span class="photo-sticker">♥</span>
       </div>
       <p class="scrap-label">the little things</p>
@@ -611,7 +611,7 @@ toggle.addEventListener("click", async () => {
       toggle.textContent = "❚❚";
     } catch (error) {
       toggle.textContent = "▶";
-      alert("Couldn't play the song. Check that stay-with-me.mp3 is in your website folder.");
+      alert("Couldn't play the song. Check that the MP3 file is uploaded beside index.html and its filename matches exactly.");
     }
   } else {
     song.pause();
