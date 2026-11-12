@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>happy 19th!!!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#13203f;--deep:#0a1226;--paper:#f1e6d0;--card:#f8f1e0;--butter:#f2d27a;--rose:#efc3c0;--sky:#b8c9de;--ink:#1a2745;--berry:#d94a63;--hand:'Gaegu','Comic Sans MS',cursive;--serif:'Fraunces',Georgia,serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--paper);font:18px/1.6 var(--serif);overflow-x:hidden;padding-bottom:150px}
+body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.07;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(56px,10vw,128px)}h2{font-size:clamp(34px,5vw,56px)}
+a{color:inherit}button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--butter);outline-offset:3px}
+section{padding:90px 7vw}
+.hand{font-family:var(--hand)}
+.sub{max-width:46ch;color:#f1e6d0cc;margin:16px 0 0}
+.paper{background:var(--card);color:var(--ink);box-shadow:4px 5px 0 var(--deep);position:relative;font:24px/1.35 var(--hand)}
+.tape:before{content:'';position:absolute;top:-13px;left:50%;width:88px;height:28px;margin-left:-44px;background:#f2c14eb3;transform:rotate(-3deg);clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,96% 50%,100% 100%,6% 100%,0 90%,3% 50%)}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.small{font:26px var(--hand);color:var(--butter);margin:0 0 14px}
+.hero .paper{max-width:430px;margin:34px 0 0 6px;padding:26px 28px 28px;transform:rotate(-2deg)}
+.hero .paper p{margin:0}
+.go{display:inline-block;margin-top:34px;font:700 26px var(--hand);text-decoration:none;border-bottom:3px wavy var(--berry);text-decoration-line:underline;text-decoration-style:wavy;text-decoration-color:var(--berry);text-decoration-thickness:2px;border:0;text-underline-offset:7px}
+.door{width:min(300px,100%);justify-self:center;display:block}
+.door-cap{font:22px var(--hand);text-align:center;transform:rotate(-2deg);margin:6px 0 0;opacity:.85}
+.leaf{transform-origin:64px 200px;animation:open 1.8s .5s cubic-bezier(.3,.7,.2,1) both}
+.spill{animation:fade 1.8s .6s both}
+@keyframes open{from{transform:scaleX(2.3)}}@keyframes fade{from{opacity:0}}
+
+/* letter */
+.letter-wrap{position:relative;max-width:680px;margin-left:3vw}
+.letter{--lh:36px;padding:30px 34px 34px 84px;transform:rotate(-1deg);line-height:var(--lh);background-image:linear-gradient(transparent calc(var(--lh) - 1px),#1a274526 0);background-size:100% var(--lh);background-position:0 24px;background-color:var(--card)}
+.letter:before{content:'';position:absolute;left:62px;top:0;bottom:0;width:2px;background:#d94a6366}
+.letter h2{font:700 38px/1 var(--hand);letter-spacing:0;margin:0 0 var(--lh);color:var(--berry)}
+.letter p{margin:0}
+.sticky{display:block;position:absolute;right:-90px;bottom:-34px;width:196px;padding:20px 20px 24px;background:var(--butter);color:var(--ink);font:700 26px/1.1 var(--hand);text-decoration:none;transform:rotate(4deg);box-shadow:4px 5px 0 var(--deep);transition:transform .2s}
+.sticky:hover{transform:rotate(0) scale(1.04)}
+
+/* notes */
+.count{font:26px var(--hand);color:var(--butter);margin:18px 0 34px}
+#slips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:22px 20px;max-width:980px}
+#slips li{transform:rotate(var(--r)) translateY(var(--y));transition:transform .2s}
+#slips li:hover{transform:rotate(0) translateY(-5px)}
+.slip{display:block;width:128px;height:90px;border:0;padding:10px 12px;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);box-shadow:3px 4px 0 var(--deep);position:relative;overflow:hidden;font:700 34px/1 var(--hand)}
+.slip:before{content:'';position:absolute;left:0;right:0;top:50%;bottom:0;background:#1a274514;border-top:1px solid #1a274533}
+.slip small{position:absolute;left:12px;bottom:9px;font:400 17px var(--hand);opacity:.7}
+#slips li:nth-child(4n+2) .slip{background:var(--butter)}#slips li:nth-child(4n+3) .slip{background:var(--rose)}#slips li:nth-child(4n) .slip{background:var(--sky)}
+.slip.read{opacity:.62}.slip.read:after{content:'♥';position:absolute;right:10px;top:8px;font-size:22px;color:var(--berry)}
+
+/* collage */
+#chapter3{background:var(--deep)}
+.collage{display:grid;grid-template-columns:repeat(12,1fr);gap:46px 24px;max-width:1060px;margin-top:56px}
+.c1{grid-column:1/6;--r:-3deg}.c2{grid-column:6/10;margin-top:60px;--r:2deg}.c3{grid-column:10/13;margin-top:14px;--r:-2deg}
+.c4{grid-column:2/6;--r:2deg}.c5{grid-column:6/10;margin-top:34px;--r:-2deg}.c6{grid-column:10/13;margin-top:20px}
+.pol{display:block;width:100%;border:0;padding:12px 12px 0;text-align:left;cursor:pointer;transform:rotate(var(--r));transition:transform .2s;background:var(--card);color:var(--ink);box-shadow:4px 5px 0 #05091a;position:relative}
+.pol:hover{transform:rotate(0) translateY(-6px)}
+.ph{display:block;aspect-ratio:var(--a,1);background:#d3c5a8;overflow:hidden}.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.cap{display:block;font:25px/1.1 var(--hand);padding:14px 4px 16px}
+.c1 .ph{--a:4/5}.c3 .ph{--a:4/5}.c5 .ph{--a:4/5}
+.env{background:none;border:0;padding:0;cursor:pointer;width:100%;text-align:left;transition:transform .2s;transform:rotate(2deg)}
+.env:hover{transform:rotate(0) translateY(-6px)}
+.env svg{display:block;width:100%;filter:drop-shadow(4px 5px 0 #05091a)}
+.env .cap{color:var(--paper);padding:14px 2px 0}.env small{display:block;font:20px var(--hand);color:var(--butter)}
+
+/* popup */
+#pop{display:none;position:fixed;inset:0;z-index:500;background:#0a1226ea;align-items:center;justify-content:center;padding:24px;overflow:auto}
+#pop.on{display:flex}
+.sheet{width:100%;max-width:470px;margin:auto;padding:38px 32px 30px;transform:rotate(-1deg);animation:unfold .25s ease-out}
+@keyframes unfold{from{transform:rotate(-1deg) scaleY(.15);opacity:0}}
+.sheet .label{font:700 26px var(--hand);color:var(--berry);margin:0}
+.sheet h3{font:600 28px/1.15 var(--serif);margin:4px 0 12px}
+#px{margin:8px 0 0;white-space:pre-line;font-size:25px}
+.pic{width:190px;max-width:70%;margin:6px auto 18px;padding:8px 8px 22px;background:#fff;box-shadow:2px 3px 0 #1a274533;transform:rotate(2deg)}.pic img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+#pc{position:absolute;top:6px;right:10px;border:0;background:none;font:36px/1 var(--hand);cursor:pointer;color:var(--ink)}
+.foot{display:block;margin-top:18px;font-size:20px;opacity:.7}
+
+/* tape player */
+.tape-player{position:fixed;right:18px;bottom:18px;width:min(330px,calc(100vw - 36px));padding:12px 14px 12px;background:var(--paper);color:var(--ink);border:2px solid var(--deep);border-radius:10px;box-shadow:4px 5px 0 var(--deep);z-index:50;transform:rotate(-1deg)}
+.top{display:flex;gap:12px;align-items:center}
+.reels{flex:none;display:flex;gap:6px;background:var(--ink);padding:7px 9px;border-radius:20px}
+.reel{width:22px;height:22px;border-radius:50%;border:4px dotted var(--paper)}
+.playing .reel{animation:spin 2.4s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.ttl{font:700 24px/1 var(--hand)}.art{font:17px/1.1 var(--hand);opacity:.8}
+.ctl{display:flex;align-items:center;gap:8px;margin-top:10px;font:17px var(--hand)}
+#musicToggle{flex:none;width:34px;height:34px;border-radius:50%;border:0;background:var(--ink);color:var(--paper);cursor:pointer}
+#musicProgress{flex:1;min-width:0;accent-color:var(--berry)}#musicVolume{width:50px;accent-color:var(--berry)}
+
+footer{padding:40px 7vw 0;font:24px var(--hand)}footer p{margin:6px 0 0}
+
+@media(max-width:860px){.hero{grid-template-columns:1fr}.door{width:210px;justify-self:start}.sticky{position:relative;right:auto;bottom:auto;margin:-14px 0 0 auto}.letter-wrap{margin-left:0}}
+@media(max-width:760px){section{padding:70px 6vw}.collage{grid-template-columns:1fr 1fr;gap:34px 20px}.collage>*{grid-column:auto!important;margin-top:0!important}.c1{grid-column:1/-1!important}.letter{padding:24px 20px 26px 54px;font-size:22px}.letter:before{left:38px}.cap{font-size:21px}}
+@media(max-width:440px){.collage{grid-template-columns:1fr}.collage>:nth-child(even){width:86%;margin-left:auto}.slip{width:112px}}
+@media(prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style></head>
+<body>
+
+<section class="hero" id="top">
+  <div>
+    <p class="small">a little smth made for you</p>
+    <h1>for my<br>love&lt;3</h1>
+    <div class="paper tape"><p>Happy 19th birthday to my future husby and the love of my life &gt;:DDD i hope you like this sweetheart&lt;3</p></div>
+    <a class="go" href="#chapter">scroll down</a>
+  </div>
+  <div>
+    <svg class="door" viewBox="0 0 260 372" role="img" aria-label="a door open at midnight, warm light spilling out">
+      <circle cx="34" cy="38" r="14" fill="#f1e6d0"/><circle cx="41" cy="33" r="12" fill="#13203f"/>
+      <g fill="#f1e6d0" opacity=".7"><circle cx="110" cy="22" r="1.6"/><circle cx="186" cy="40" r="1.4"/><circle cx="232" cy="14" r="1.8"/><circle cx="74" cy="54" r="1.2"/></g>
+      <rect x="50" y="70" width="160" height="248" rx="6" fill="#0a1226" stroke="#f1e6d0" stroke-width="3"/>
+      <rect x="64" y="84" width="132" height="234" fill="#f2c14e"/>
+      <polygon class="spill" points="64,318 196,318 246,368 14,368" fill="#f2c14e" opacity=".4"/>
+      <g class="leaf"><polygon points="64,84 120,104 120,300 64,318" fill="#1d2d54"/><polygon points="76,120 108,130 108,170 76,164" fill="none" stroke="#f1e6d0" stroke-opacity=".25" stroke-width="2"/><polygon points="76,190 108,196 108,282 76,292" fill="none" stroke="#f1e6d0" stroke-opacity=".25" stroke-width="2"/><circle cx="111" cy="210" r="4" fill="#f1e6d0"/></g>
+      <line x1="0" y1="318" x2="260" y2="318" stroke="#f1e6d0" stroke-opacity=".4" stroke-width="3"/>
+    </svg>
+    <p class="door-cap">mayonaka no door</p>
+  </div>
+</section>
+
+<section id="chapter">
+  <div class="letter-wrap">
+    <div class="paper letter tape">
+      <h2>from your fangirl</h2>
+      <p>You mean the whole world to me nidhish . im so glad we made it together this far. i really hope this birthday is special to u . u deserve to feel that celebrated and loved . Im so grateful for all youve done for us my darling , i really am . each year you keep reminding me of just how much im blessed with . you're everything ive ever wanted. udk how thankful i am for you still staying. you deserve to feel so loved baby i really hope i make u feel as special as you do me &lt;3 happy 19th my love .</p>
+    </div>
+    <a class="sticky" href="#notes">open 19 little notes</a>
+  </div>
+</section>
+
+<section id="notes">
+  <h2>19 notes for 19</h2>
+  <p class="sub">tap a slip. each one has a little message waiting for you.</p>
+  <p class="count" id="count">opened 0 of 19</p>
+  <ul id="slips"></ul>
+</section>
+
+<section id="chapter3">
+  <h2>things that remind me of you</h2>
+  <p class="sub">little pieces of my world that somehow always lead back to you. tap a photo to read what i wrote.</p>
+  <div class="collage">
+    <div class="c1"><button class="pol tape" data-i="0"><span class="ph"><img src="images/photo12.png" onerror="this.onerror=null;this.src='photo12.png'" alt="cuddlie pic"></span><span class="cap">id wanna hold you like this</span></button></div>
+    <div class="c2"><button class="pol tape" data-i="1"><span class="ph"><img src="photo8.jpg" alt="so pretty"></span><span class="cap">im so lucky&lt;3</span></button></div>
+    <div class="c3"><button class="pol tape" data-i="2"><span class="ph"><img src="images/photo10.png" onerror="this.onerror=null;this.src='photo10.png'" alt="A silly memory"></span><span class="cap">you made it so special</span></button></div>
+    <div class="c4"><button class="pol tape" data-i="3"><span class="ph"><img src="images/photo4.jpg" onerror="this.onerror=null;this.src='photo4.jpg'" alt="A special memory"></span><span class="cap">i fell in love more</span></button></div>
+    <div class="c5"><button class="pol tape" data-i="4"><span class="ph"><img src="images/photo11.png" onerror="this.onerror=null;this.src='photo11.png'" alt="Little things about you"></span><span class="cap">the little things</span></button></div>
+    <div class="c6"><button class="env" data-i="5" aria-label="one last thing, open me">
+      <svg viewBox="0 0 300 200"><rect width="300" height="200" fill="#e8d6ae"/><polyline points="0,200 112,102 188,102 300,200" fill="none" stroke="#1a274540" stroke-width="2"/><polygon points="0,0 300,0 150,118" fill="#f2d27a"/><polyline points="0,0 150,118 300,0" fill="none" stroke="#1a274540" stroke-width="2"/><circle cx="150" cy="116" r="21" fill="#d94a63"/><text x="150" y="125" text-anchor="middle" font-size="24" fill="#f8f1e0">♡</text></svg>
+      <span class="cap">one last thing...<small>open me ♡</small></span></button></div>
+  </div>
+</section>
+
+<footer><a href="#top">back to top</a><p>made with love, just for you ♡</p></footer>
+
+<div id="pop" onclick="if(event.target===this)closePaper()"><div class="paper sheet tape" role="dialog" aria-modal="true" aria-labelledby="pl">
+  <button id="pc" aria-label="close" onclick="closePaper()">×</button>
+  <div class="pic" id="pf" hidden><img id="pi" alt=""></div>
+  <p class="label" id="pl"></p><h3 id="pt"></h3><p id="px"></p>
+  <span class="foot">made with love, just for you ♡</span>
+</div></div>
+
+<div class="tape-player" id="player">
+  <div class="top"><div class="reels"><span class="reel"></span><span class="reel"></span></div>
+    <div><div class="ttl">our song ♡</div><div class="art" id="art">Stay With Me — Miki Matsubara</div></div></div>
+  <audio id="ourSong" loop><source src="Mayonaka No Door Stay With Me - Miki Matsubara (1979) audio hq.mp3" type="audio/mpeg"></audio>
+  <div class="ctl"><button id="musicToggle" aria-label="Play or pause music">▶</button>
+    <input type="range" id="musicProgress" min="0" max="100" value="0" aria-label="song progress"><span id="musicTime">0:00</span>
+    <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5" aria-label="volume"></div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+/* music */
+const song=$('#ourSong'),tg=$('#musicToggle'),pr=$('#musicProgress'),tm=$('#musicTime');
+tg.onclick=async()=>{if(song.paused){try{await song.play();tg.textContent='❚❚';$('#player').classList.add('playing')}catch(e){$('#art').textContent="couldn't find the mp3 file"}}else{song.pause();tg.textContent='▶';$('#player').classList.remove('playing')}};
+song.ontimeupdate=()=>{if(song.duration){pr.value=song.currentTime/song.duration*100;tm.textContent=Math.floor(song.currentTime/60)+':'+String(Math.floor(song.currentTime%60)).padStart(2,'0')}};
+pr.oninput=()=>{if(song.duration)song.currentTime=pr.value/100*song.duration};
+$('#musicVolume').oninput=e=>song.volume=e.target.value;song.volume=.5;
+
+/* popup */
+let last;
+function openPaper(o,from){last=from;$('#pl').textContent=o.label||'';$('#pt').textContent=o.title||'';$('#pt').hidden=!o.title;$('#px').textContent=o.text;$('#pf').hidden=!o.img;if(o.img)$('#pi').src=o.img;$('#pop').classList.add('on');$('#pc').focus()}
+function closePaper(){$('#pop').classList.remove('on');if(last)last.focus()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePaper()});
+
+/* 19 notes */
+const messages=[
+"i love u because you make me feel loved even through our fights.",
+"i love u because you know how to make me happy, more than anybody has ever.",
+"i love u because you look back at me with the most prettiest eyes.",
+"i love u because even through a screen, you make me feel wet, and close.",
+"i love u because your happiness matters to me (nd ik mine does to u ).",
+"i love u because you deserve the whole world.",
+"i love u because i could listen to your cute giggles forever.",
+"i love u because you make me excited to marry you someday.",
+"i love u because i admire you , and the person you're becoming.",
+"i love u because you're the most kindest guy i've ever known .",
+"i love u because you understand me, and if you dont, you try to.",
+"i love u because talking to you is the only highlight of my day.",
+"i love u because you get so cute when you're excited.",
+"i love u because you are such an animal whisperer (atp im jealous).",
+"i love u because you choose to stay , and put in effort for us.",
+"i love u because you are more than ur overthinking and mistakes.",
+"i love u because i wish i could make you see yourself the way i see u.",
+"i love u because you're mine and im forever yours.",
+"i love u because you're you , and i couldnt ever wish for anybody better."
+];
+const opened=new Set(),ul=$('#slips');
+messages.forEach((m,i)=>{
+  const li=document.createElement('li'),b=document.createElement('button');
+  li.style.setProperty('--r',(((i*7)%9-4)*.9)+'deg');li.style.setProperty('--y',((i*5)%4*7)+'px');
+  b.className='slip';b.innerHTML=(i+1)+'<small>tap to open</small>';
+  b.onclick=()=>{openPaper({label:'note '+(i+1)+' of 19',text:m},b);opened.add(i);b.classList.add('read');
+    $('#count').textContent=opened.size===19?'all 19 opened ♡':'opened '+opened.size+' of 19'};
+  li.appendChild(b);ul.appendChild(li)});
+
+/* photo notes */
+const scrapbookNotes=[
+{label:"my favorite view",title:"Our cuddlies together",message:"no matter what we're going through, you make sure u never let go , and u hold me close to u . i love our cuddlies so much, i hope to be this close with u forever. never let go."},
+{label:"my everything",title:"Our moments<3",message:"you turn me on so much without even realising it.( i want to be warm and close with you forever ngnjngh) our moments mean so much to me , because of you."},
+{label:"one of my favourite daties",title:"Our MC datie",message:"you make our daties so perfect god. our mc datie is the perfect example of how much u do for us"},
+{label:"i couldnt stop staring since",title:"First ever pic",message:"The first ever pic of ur body<33 god you looked so pretty, this picture was engraved to my head for weeks."},
+{label:"my best friend",title:"Texts I adore",message:"the most cutest, and sweetest little baby ever<3 you were my best friend ever since we met, and ive never stopped secteretly having a crush on u >:D"},
+{label:"one last thing",title:"to the only guy ive ever loved",message:"u mean so much more to me , more than i could fit in this site. i hope u see urself for the perfect little baby that u are<3 thank you for being with me for this long, being kind and patient with me , and for always being there for me, every step of the way. you deserve only the best , my love. happy birthday. i love you. ♡"}
+];
+document.querySelectorAll('[data-i]').forEach(el=>el.onclick=()=>{
+  const n=scrapbookNotes[el.dataset.i],img=el.querySelector('img');
+  openPaper({label:n.label,title:n.title,text:n.message,img:img&&img.src},el)});
+</script>
+</body>
+</html>
