@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>happy 19th!!!</title>
+<style>
+:root{--night:#050b20;--blue:#101f49;--glow:#8abaff;--soft:#c9d9ff;--gold:#e9d7a2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#e9efff;background:radial-gradient(ellipse at 50% 0%,#172b5b 0%,#080f27 42%,#030611 100%);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+#stars{position:fixed;inset:0;z-index:-1;pointer-events:none}.star{position:absolute;background:#dceaff;border-radius:50%;opacity:.6;animation:twinkle 3s ease-in-out infinite alternate}@keyframes twinkle{to{opacity:.15;transform:scale(.65)}}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 6%;background:#050b20aa;backdrop-filter:blur(12px);z-index:5;font:12px monospace;letter-spacing:2px;color:#a8caff}
+nav a{color:inherit;text-decoration:none}section{min-height:90vh;padding:100px 8% 70px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero{min-height:100vh}.eyebrow{font:11px monospace;letter-spacing:4px;color:#8abaff;text-transform:uppercase}
+h1{font-size:clamp(44px,9vw,100px);line-height:.95;margin:24px 0 18px;font-weight:normal;letter-spacing:-3px;text-shadow:0 0 35px #3d70c777}
+h2{font-weight:normal;font-size:clamp(30px,5vw,54px);margin:15px 0 22px;color:#dce8ff}
+p{max-width:650px;line-height:1.85;color:#c3cfe9;font-size:17px}
+.moon{width:110px;height:110px;border-radius:50%;margin:25px;background:radial-gradient(circle at 35% 30%,#f0f4ff,#a9c4ed 45%,#6e86b4 75%);box-shadow:0 0 70px #8abaff55;position:relative}.moon:after{content:'';position:absolute;width:105px;height:105px;border-radius:50%;background:#101d42;left:25px;top:-10px}
+.btn{display:inline-block;border:1px solid #6e93d7;color:#dce8ff;padding:13px 22px;border-radius:30px;background:#0b1634;cursor:pointer;text-decoration:none;font:12px monospace;letter-spacing:1px;margin:10px;transition:.2s}.btn:hover{background:#20376b;transform:translateY(-2px)}
+.panel{max-width:760px;border:1px solid #29416d;background:#0b1430bb;border-radius:18px;padding:28px 30px;box-shadow:0 20px 70px #0004}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;max-width:850px;width:100%;margin-top:25px}
+.note{border:1px solid #25385e;background:#0a1430;padding:20px 12px;border-radius:12px;color:#d6e3ff;min-height:90px;cursor:pointer;font:13px monospace;letter-spacing:.5px;transition:.2s}.note:hover{border-color:#8abaff;transform:translateY(-3px)}.note small{display:block;color:#789bd6;margin-bottom:10px}
+#letter{display:none;white-space:pre-line;text-align:left}.divider{color:#7798d3;letter-spacing:8px;margin:20px}.footer{font:11px monospace;letter-spacing:2px;color:#6d85b5}
+/* POPUP NOTES */
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 5, 18, 0.88);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 20px;
+}
+
+.popup-overlay.active {
+    display: flex;
+}
+
+.popup-box {
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    padding: 40px 28px;
+    text-align: center;
+    background: linear-gradient(145deg, #142653, #080f25);
+    border: 1px solid #496ba8;
+    border-radius: 22px;
+    box-shadow: 0 0 50px #3d70c744;
+    animation: popupOpen 0.3s ease;
+}
+
+.popup-star {
+    font-size: 38px;
+    color: #a5c6ff;
+    text-shadow: 0 0 20px #8abaff;
+    margin-bottom: 20px;
+}
+
+.popup-box p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #e1eaff;
+    margin: 25px auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    color: #a5c6ff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes popupOpen {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@media(max-width:600px){nav{padding:14px 4%}section{padding:90px 6% 55px}p{font-size:15px}.panel{padding:22px}}
+
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  padding: 15px;
+  background: rgba(13, 16, 37, 0.95);
+  border: 1px solid #8872ce;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(137, 100, 255, 0.25);
+  backdrop-filter: blur(12px);
+  color: #eee8ff;
+  z-index: 9999;
+  font-family: "Courier New", monospace;
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.music-icon {
+  font-size: 30px;
+  color: #c39aff;
+}
+
+.music-title {
+  color: #c39aff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.music-artist {
+  font-size: 10px;
+  color: #8abaff;
+  margin-top: 4px;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#musicToggle {
+  background: #29204c;
+  color: #c39aff;
+  border: 1px solid #8872ce;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#musicProgress {
+  flex: 1;
+  min-width: 0;
+  accent-color: #a98aff;
+  cursor: pointer;
+}
+
+#musicTime {
+  font-size: 10px;
+  color: #aaa4cf;
+}
+
+#musicVolume {
+  width: 55px;
+  accent-color: #8abaff;
+  cursor: pointer;
+}
+
+.volume-icon {
+  color: #8abaff;
+  font-size: 12px;
+}
+
+
+/* ===== CHAPTER 3 SCRAPBOOK ===== */
+
+.scrapbook-section {
+  padding: 80px 20px;
+  position: relative;
+  color: #f3eaff;
+}
+
+.scrapbook-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.scrapbook-eyebrow {
+  color: #bda5ff;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+.scrapbook-heading h2 {
+  font-size: clamp(28px, 5vw, 48px);
+  color: #e5d8ff;
+  text-shadow: 0 0 20px rgba(153, 100, 255, 0.3);
+  margin-bottom: 15px;
+}
+
+.scrapbook-subtitle {
+  color: #b6b5d8;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.scrapbook-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 35px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.scrap-card {
+  position: relative;
+  background: rgba(22, 24, 52, 0.85);
+  border: 1px solid rgba(157, 125, 255, 0.25);
+  padding: 15px 15px 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.scrap-card:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.scrap-card:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.scrap-card:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.03);
+  box-shadow: 0 0 30px rgba(138, 91, 255, 0.25);
+  z-index: 2;
+}
+
+.purple-card {
+  border-color: rgba(190, 135, 255, 0.4);
+}
+
+.blue-card {
+  border-color: rgba(105, 175, 255, 0.4);
+}
+
+.scrap-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #28204c, #152b54);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.scrap-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.scrap-card:hover .scrap-photo img {
+  transform: scale(1.06);
+}
+
+.photo-sticker {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  color: #e5caff;
+  text-shadow: 0 0 12px #a77bff;
+}
+
+.scrap-label {
+  color: #9bbcff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.scrap-card h3 {
+  color: #f0e5ff;
+  font-size: 20px;
+  font-family: Georgia, serif;
+  margin-bottom: 10px;
+}
+
+.scrap-hint {
+  color: #9998c4;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.secret-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  background: linear-gradient(145deg, #211344, #10274e);
+  text-align: center;
+  border: 1px dashed #927bff;
+}
+
+.secret-symbol {
+  display: block;
+  font-size: 45px;
+  color: #bda5ff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px #8d65ff;
+}
+
+.secret-content h3 {
+  font-family: Georgia, serif;
+  color: #e7d7ff;
+  font-size: 23px;
+}
+
+.secret-content p {
+  color: #aebce9;
+  font-size: 12px;
+  margin: 12px 0;
+}
+
+.secret-open {
+  color: #c5a5ff;
+  font-size: 12px;
+}
+
+/* POPUP */
+
+.scrap-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 6, 20, 0.85);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.scrap-popup.active {
+  display: flex;
+}
+
+.scrap-popup-box {
+  width: 100%;
+  max-width: 450px;
+  background: linear-gradient(145deg, #1c1638, #101e3c);
+  border: 1px solid rgba(174, 139, 255, 0.5);
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 50px rgba(113, 78, 255, 0.2);
+  animation: scrapbookPop 0.3s ease;
+}
+
+@keyframes scrapbookPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scrap-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #d7c7ff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.popup-symbol {
+  display: block;
+  color: #b99aff;
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.scrap-popup-box h3 {
+  font-family: Georgia, serif;
+  color: #e8dfff;
+  font-size: 28px;
+  margin: 12px 0 20px;
+}
+
+#popupMessage {
+  color: #c4c7e9;
+  font-size: 14px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.popup-footer {
+  display: block;
+  color: #8d9ed8;
+  font-size: 11px;
+  margin-top: 25px;
+  font-style: italic;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .scrapbook-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .scrap-card {
+    padding: 10px 10px 15px;
+  }
+
+  .scrap-card h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .scrapbook-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+}
+
+</style></head>
+<body><div id="stars"></div>
+<nav><a href="#top">back to top</a><a href="#notes">little notes</a></nav>
+<section class="hero" id="top">
+<div class="eyebrow">a little smth made for you</div><div class="moon"></div>
+<h1>for my love<3</h1><div style="font:13px monospace;letter-spacing:3px;color:#a5c6ff">FOR MY CUTIE · NOVEMBER 11</div>
+<p>Happy 19th birthday to my future husby and the love of my life >:DDD i hope you like this sweetheart<3</p>
+<a class="btn" href="#chapter">SCROLL DOWN</a>
+</section>
+<section id="chapter"><div class="eyebrow">chapter 1 : a little message</div><h2>from your fangirl</h2>
+<div class="panel"><p>You mean the whole world to me nidhish . im so glad we made it together this far. i really hope this birthday is special to u . u  deserve to feel that celebrated and loved . Im so grateful for all youve done for us my darling , i really am . each year you keep reminding me of just how much im blessed with . you're everything ive ever wanted. udk how thankful i am for you still staying. you deserve to feel so loved baby i really hope i make u feel as special as you do me <3 happy 19th my love .</p></div>
+<div class="divider">✦ · ☾ · ✦</div><a class="btn" href="#notes">OPEN 19 LITTLE NOTES</a>
+</section>
+<section id="notes"><div class="eyebrow">chapter two : little reasons</div><h2>19 notes for 19</h2><p>tap a star. each one has a little message waiting for you.</p>
+<div class="grid" id="grid"></div>
+<div class="popup-overlay" id="popup">
+    <div class="popup-box">
+        <button class="close-btn" id="closePopup">×</button>
+
+        <div class="popup-star">✦</div>
+
+        <div class="eyebrow" id="popupTitle">
+            A LITTLE REMINDER
+        </div>
+
+        <p id="message"></p>
+    </div>
+</div>
+</section>
+
+<!-- CHAPTER 3: OUR SCRAPBOOK -->
+<section id="chapter3" class="scrapbook-section">
+
+  <div class="scrapbook-heading">
+    <p class="scrapbook-eyebrow">CHAPTER THREE ✦ A LITTLE COLLECTION</p>
+    <h2>Things That Remind Me of You</h2>
+    <p class="scrapbook-subtitle">
+      little pieces of my world that somehow always lead back to you.
+    </p>
+  </div>
+
+  <div class="scrapbook-grid">
+
+    <!-- CARD 1 -->
+    <div class="scrap-card purple-card" onclick="openScrap(0)">
+      <div class="scrap-photo">
+        <img src="images/photo12.png" alt="cuddlie pic">
+        <span class="photo-sticker">♡</span>
+      </div>
+      <p class="scrap-label">id wanna hold you like this</p>
+      <h3><3</h3>
+      <p class="scrap-hint">tap to open ✦</p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="scrap-card blue-card" onclick="openScrap(1)">
+      <div class="scrap-photo">
+        <img src="images/photo8.jpg" alt="so pretty">
+        <span class="photo-sticker">♫</span>
+      </div>
+      <p class="scrap-label">im so lucky<3</p>
+      <h3><3</h3>
+      <p class="scrap-hint">tap to open ✦</p>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="scrap-card purple-card" onclick="openScrap(2)">
+      <div class="scrap-photo">
+        <img src="images/photo10.png" alt="A silly memory">
+        <span class="photo-sticker">✧</span>
+      </div>
+      <p class="scrap-label">you made it so special</p>
+      <h3><3</h3>
+      <p class="scrap-hint">tap to open ✦</p>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="scrap-card blue-card" onclick="openScrap(3)">
+      <div class="scrap-photo">
+        <img src="images/photo4.jpg" alt="A special memory">
+        <span class="photo-sticker">∞</span>
+      </div>
+      <p class="scrap-label">i fell in love more</p>
+      <h3><3</h3>
+      <p class="scrap-hint">tap to open ✦</p>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="scrap-card purple-card" onclick="openScrap(4)">
+      <div class="scrap-photo">
+        <img src="images/photo11.png" alt="Little things about you">
+        <span class="photo-sticker">♥</span>
+      </div>
+      <p class="scrap-label">the little things</p>
+      <h3><3</h3>
+      <p class="scrap-hint">tap to open ✦</p>
+    </div>
+
+    <!-- CARD 6: SECRET -->
+    <div class="scrap-card secret-card" onclick="openScrap(5)">
+      <div class="secret-content">
+        <span class="secret-symbol">✦</span>
+        <h3>one last thing...</h3>
+        <p>there's something hidden here</p>
+        <span class="secret-open">open me ♡</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- POPUP -->
+  <div id="scrapPopup" class="scrap-popup" onclick="closeScrapOutside(event)">
+    <div class="scrap-popup-box">
+      <button class="scrap-close" onclick="closeScrap()">×</button>
+      <span id="popupSymbol" class="popup-symbol">♡</span>
+      <p id="popupLabel" class="scrap-label">A LITTLE NOTE</p>
+      
+      <p id="popupMessage">Your message goes here.</p>
+      <span class="popup-footer">made with love, just for you ♡</span>
+    </div>
+  </div>
+
+</section>
+<div class="music-player">
+  <div class="music-info">
+    <span class="music-icon">♫</span>
+    <div>
+      <div class="music-title">our song ♡</div>
+      <div class="music-artist">Stay With Me — Miki Matsubara</div>
+    </div>
+  </div>
+
+  <audio id="ourSong" loop>
+    <source src="Mayonaka No Door Stay With Me - Miki Matsubara (1979) audio hq.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="music-controls">
+    <button id="musicToggle" aria-label="Play or pause music">
+      ▶
+    </button>
+
+    <input
+      type="range"
+      id="musicProgress"
+      min="0"
+      max="100"
+      value="0"
+    >
+
+    <span id="musicTime">0:00</span>
+
+    <span class="volume-icon">♫</span>
+    <input
+      type="range"
+      id="musicVolume"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0.5"
+    >
+  </div>
+</div>
+<script>
+
+const song = document.getElementById("ourSong");
+const toggle = document.getElementById("musicToggle");
+const progress = document.getElementById("musicProgress");
+const timeDisplay = document.getElementById("musicTime");
+const volume = document.getElementById("musicVolume");
+
+toggle.addEventListener("click", async () => {
+  if (song.paused) {
+    try {
+      await song.play();
+      toggle.textContent = "❚❚";
+    } catch (error) {
+      toggle.textContent = "▶";
+      alert("Couldn't play the song. Check that stay-with-me.mp3 is in your website folder.");
+    }
+  } else {
+    song.pause();
+    toggle.textContent = "▶";
+  }
+});
+
+song.addEventListener("timeupdate", () => {
+  if (song.duration) {
+    progress.value = (song.currentTime / song.duration) * 100;
+
+    const mins = Math.floor(song.currentTime / 60);
+    const secs = Math.floor(song.currentTime % 60)
+      .toString()
+      .padStart(2, "0");
+
+    timeDisplay.textContent = `${mins}:${secs}`;
+  }
+});
+
+progress.addEventListener("input", () => {
+  if (song.duration) {
+    song.currentTime = (progress.value / 100) * song.duration;
+  }
+});
+
+volume.addEventListener("input", () => {
+  song.volume = volume.value;
+});
+
+song.volume = 0.5;
+
+const s=document.getElementById('stars');for(let i=0;i<125;i++){let d=document.createElement('i');d.className='star';d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';d.style.width=d.style.height=(Math.random()*2+1)+'px';d.style.animationDelay=Math.random()*4+'s';s.appendChild(d)}
+const messages=[
+"i love u because you make me feel loved even through our fights.",
+"i love u because you know how to make me happy, more than anybody has ever.",
+"i love u because you look back at me with the most prettiest eyes.",
+"i love u because even through a screen, you make me feel wet, and close.",
+"i love u because your happiness matters to me (nd ik mine does to u ).",
+"i love u because you deserve the whole world.",
+"i love u because i could listen to your cute giggles forever.",
+"i love u because you make me excited to marry you someday.",
+"i love u because i admire you , and the person you're becoming.",
+"i love u because you're the most kindest guy i've ever known .",
+"i love u because you understand me, and if you dont, you try to.",
+"i love u because talking to you is the only highlight of my day.",
+"i love u because you get so cute when you're excited.",
+"i love u because you are such an animal whisperer (atp im jealous).",
+"i love u because you choose to stay , and put in effort for us.",
+"i love u because you are more than ur overthinking and mistakes.",
+"i love u because i wish i could make you see yourself the way i see u.",
+"i love u because you're mine and im forever yours.",
+"i love u because you're you , and i couldnt ever wish for anybody better."
+];
+
+const grid = document.getElementById('grid');
+const popup = document.getElementById('popup');
+const message = document.getElementById('message');
+const closePopup = document.getElementById('closePopup');
+
+messages.forEach((m, i) => {
+    const b = document.createElement('button');
+
+    b.className = 'note';
+
+    b.innerHTML =
+        '<small>✦ NOTE ' +
+        String(i + 1).padStart(2, '0') +
+        '</small>tap to reveal';
+
+    b.addEventListener('click', () => {
+        message.textContent = m;
+        popup.classList.add('active');
+    });
+
+    grid.appendChild(b);
+});
+
+closePopup.addEventListener('click', () => {
+    popup.classList.remove('active');
+});
+
+popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+        popup.classList.remove('active');
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        popup.classList.remove('active');
+    }
+});
+
+/* ===== SCRAPBOOK POPUP CONTENT ===== */
+
+const scrapbookNotes = [
+  {
+    symbol: "♡",
+    label: "my favorite view",
+    title: "Our cuddlies together",
+    message: "no matter what we're going through, you make sure u never let go , and u hold me close to u . i love our cuddlies so much, i hope to be this close with u forever. never let go."
+  },
+  {
+    symbol: "♫",
+    label: "my everything",
+    title: "Our moments<3",
+    message: "you turn me on so much without even realising it.( i want to be warm and close with you forever ngnjngh) our moments mean so much to me , because of you."
+  },
+  {
+    symbol: "✧",
+    label: "one of my favourite daties",
+    title: "Our MC datie",
+    message: "you make our daties so perfect god. our mc datie is the perfect example of how much u do for us"
+  },
+  {
+    symbol: "∞",
+    label: "i couldnt stop staring since",
+    title: "First ever pic",
+    message: "The first ever pic of ur body<33 god you looked so pretty, this picture was engraved to my head for weeks."
+  },
+  {
+    symbol: "♥",
+    label: "my best friend",
+    title: "Texts I adore",
+    message: "the most cutest, and sweetest little baby ever<3 you were my best friend ever since we met, and ive never stopped secteretly having a crush on u >:D"
+  },
+  {
+    symbol: "✦",
+    label: "ONE LAST THING",
+    title: "to the only guy ive ever loved",
+    message: "u mean so much more to me , more than i could fit in this site. i hope u see urself for the perfect little baby that u are<3 thank you for being with me for this long, being kind and patient with me , and for always being there for me, every step of the way. you deserve only the best , my love. happy birthday. i love you. ♡"
+  }
+];
+
+function openScrap(index) {
+  const note = scrapbookNotes[index];
+
+  document.getElementById("popupSymbol").textContent = note.symbol;
+  document.getElementById("popupLabel").textContent = note.label;
+  document.getElementById("popupMessage").textContent = note.message;
+
+  document.getElementById("scrapPopup").classList.add("active");
+}
+
+function closeScrap() {
+  document.getElementById("scrapPopup").classList.remove("active");
+}
+
+function closeScrapOutside(event) {
+  if (event.target.id === "scrapPopup") {
+    closeScrap();
+  }
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeScrap();
+  }
+});
+
+
+</script>
+</body>
+</html>
